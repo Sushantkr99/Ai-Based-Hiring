@@ -106,6 +106,13 @@ http://localhost:8501
 
 ---
 
+## 🌐 Live Demo
+
+**Streamlit Web App:**  
+https://ai-based-hiring-bysk.streamlit.app/
+
+---
+
 ## 🛠️ Technologies Used
 
 * Python
