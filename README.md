@@ -152,7 +152,7 @@ https://ai-based-hiring-bysk.streamlit.app/
 * Recall Score
 * F1 Score
 * Confusion Matrix
-* GridSearchCV (Hyperparameter Tuning)
+* GridSearchCV
 
 ---
 
@@ -172,8 +172,6 @@ https://ai-based-hiring-bysk.streamlit.app/
 **Sushant Kumar**
 
 B.Tech – Computer Science & Engineering
-
-Ramgarh Engineering College
 
 ---
 
