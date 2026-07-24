@@ -1,80 +1,149 @@
 # 🤖 AI-Based Hiring Prediction System
 
-A Machine Learning web application that predicts whether a job candidate is likely to be **Hired** or **Rejected** based on their profile details, including skills, education, experience, certifications, job role, salary expectation, and project count.
+A machine learning web application that predicts whether a candidate is likely to be **Hired** or **Rejected** based on profile information such as skills, experience, education, certifications, job role, salary expectation, and project count.
 
-The application is built using **Python**, **Scikit-learn**, and **Streamlit** with a **Random Forest Classifier** to provide real-time hiring predictions.
+The project includes a Jupyter Notebook for data analysis, preprocessing, model training, comparison, and evaluation, along with a Streamlit application for interactive predictions.
+
+---
+
+## 🌐 Live Demo
+
+**Streamlit Web App:**  
+[Open AI-Based Hiring Prediction System](https://ai-based-hiring-bysk.streamlit.app/)
 
 ---
 
 ## 🚀 Features
 
-* Interactive Streamlit Web Application
-* Candidate Hiring Prediction (Hire / Reject)
-* Real-Time Prediction
-* Prediction Confidence (Hire & Reject Probability)
-* Dynamic Input Fields
-* Missing Value Handling
-* User-Friendly Interface
+- Interactive Streamlit web application
+- Candidate hiring prediction: **Hire** or **Reject**
+- Real-time predictions from candidate details
+- Hire and reject probability display
+- Dynamic input options generated from the dataset
+- Missing-value handling for certifications
+- Multiple machine learning models evaluated
+- Model accuracy and F1 score displayed in the application
+- User-friendly two-column input layout
 
 ---
 
 ## 📊 Input Features
 
-The model predicts hiring decisions using the following candidate information:
+The prediction is based on the following candidate information:
 
-* Skills
-* Experience (Years)
-* Education
-* Certifications
-* Job Role
-* Salary Expectation ($)
-* Projects Count
+| Feature | Description |
+|---|---|
+| Skills | Candidate's technical or professional skills |
+| Experience (Years) | Total years of work experience |
+| Education | Highest education qualification |
+| Certifications | Professional certifications completed |
+| Job Role | Role for which the candidate is applying |
+| Salary Expectation ($) | Expected salary |
+| Projects Count | Number of completed projects |
 
 ---
 
 ## 🎯 Output
 
-The application predicts:
+The application predicts one of the following results:
 
-* ✅ Hire
-* ❌ Reject
+- ✅ **Hire**
+- ❌ **Reject**
 
 It also displays:
 
-* Hire Probability
-* Reject Probability
+- Hire probability
+- Reject probability
+- Model name
+- Accuracy score
+- F1 score
+- Dataset size
 
 ---
 
 ## 🧠 Machine Learning Workflow
 
-1. Data Collection
-2. Data Preprocessing
-3. Missing Value Handling
-4. Feature Selection
-5. Label Encoding & One-Hot Encoding
-6. Train-Test Split
-7. Model Training
-8. Model Evaluation
-9. Streamlit Web Deployment
+1. Load the dataset
+2. Inspect and clean the data
+3. Handle missing certification values
+4. Select relevant input features and target column
+5. Encode categorical features
+6. Split the data into training and testing sets
+7. Train multiple classification models
+8. Evaluate the models
+9. Compare model performance
+10. Build and deploy the Streamlit application
+
+---
+
+## 🤖 Machine Learning Models
+
+The following classification models were tested in the notebook:
+
+- Logistic Regression
+- K-Nearest Neighbors
+- Decision Tree Classifier
+- Random Forest Classifier
+
+The current Streamlit application uses a **Random Forest Classifier** inside a Scikit-learn pipeline.
+
+---
+
+## 🔧 Data Preprocessing
+
+The project uses:
+
+- Missing-value handling
+- Feature selection
+- One-Hot Encoding for categorical columns
+- Numeric feature passthrough
+- Train-test split
+- Scikit-learn `ColumnTransformer`
+- Scikit-learn `Pipeline`
+
+The preprocessing pipeline ensures that the same transformations are applied during both model training and prediction.
+
+---
+
+## 📈 Model Evaluation
+
+The models are evaluated using:
+
+- Accuracy Score
+- Precision Score
+- Recall Score
+- F1 Score
+- Confusion Matrix
+- Hyperparameter tuning with GridSearchCV
+
+The notebook also examines model coefficients or feature importance to understand how candidate features influence predictions.
 
 ---
 
 ## 📂 Project Structure
 
 ```text
-AI-Based-Hiring-Prediction/
+AI-BASED-HIRING/
+│
+├── .vscode/
+│   └── settings.json
+│
+├── dataset/
+│   └── AI-Based Hiring Prediction System.csv
+│
+├── notebook/
+│   └── ai_based_hiring.ipynb
 │
 ├── app.py
-├── AI-Based Hiring Prediction System.csv
-├── ai_based_hiring.ipynb
-├── requirements.txt
-└── README.md
+├── README.md
+└── requirements.txt
 ```
 
 ---
 
 ## 📦 Requirements
+
+The main dependencies are:
 
 ```text
 streamlit
@@ -84,7 +153,7 @@ matplotlib
 scikit-learn
 ```
 
-Install the dependencies:
+Install all required packages using:
 
 ```bash
 pip install -r requirements.txt
@@ -94,11 +163,26 @@ pip install -r requirements.txt
 
 ## ▶️ Run the Application
 
+Clone the repository and move into the project directory:
+
+```bash
+git clone https://github.com/Sushantkr99/Ai-Based-Hiring.git
+cd AI-Based-Hiring
+```
+
+Install the dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+Run the Streamlit application:
+
 ```bash
 streamlit run app.py
 ```
 
-Then open:
+Then open the local URL shown in the terminal, usually:
 
 ```text
 http://localhost:8501
@@ -106,53 +190,15 @@ http://localhost:8501
 
 ---
 
-## 🌐 Live Demo
-
-**Streamlit Web App:**  
-https://ai-based-hiring-bysk.streamlit.app/
-
----
-
 ## 🛠️ Technologies Used
 
-* Python
-* Jupyter Notebook
-* Streamlit
-* Pandas
-* NumPy
-* Matplotlib
-* Scikit-learn
-
----
-
-## 🤖 Machine Learning Models
-
-* Logistic Regression
-* K-Nearest Neighbors (KNN)
-* Decision Tree Classifier
-* Random Forest Classifier
-
----
-
-## 🔧 Data Preprocessing
-
-* Missing Value Handling
-* Label Encoding
-* One-Hot Encoding
-* StandardScaler
-* Train-Test Split
-* Feature Selection
-
----
-
-## 📈 Model Evaluation
-
-* Accuracy Score
-* Precision Score
-* Recall Score
-* F1 Score
-* Confusion Matrix
-* GridSearchCV
+- Python
+- Jupyter Notebook
+- Streamlit
+- Pandas
+- NumPy
+- Matplotlib
+- Scikit-learn
 
 ---
 
@@ -167,11 +213,18 @@ https://ai-based-hiring-bysk.streamlit.app/
 
 ---
 
+## ⚠️ Disclaimer
+
+This project is created for educational purposes. Predictions are generated by a machine learning model and may not always be correct. A final hiring decision should always be made by a qualified recruiter after reviewing the complete candidate profile.
+
+---
+
 ## 👨‍💻 Author
 
-**Sushant Kumar**
+**Sushant Kumar**  
 
-B.Tech – Computer Science & Engineering
+B.Tech — Computer Science and Engineering  
+
 
 ---
 

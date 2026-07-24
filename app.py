@@ -6,7 +6,7 @@ from sklearn.compose import ColumnTransformer
 from sklearn.preprocessing import OneHotEncoder
 from sklearn.pipeline import Pipeline
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.metrics import accuracy_score, f1_score
+from sklearn.metrics import accuracy_score, f1_score, recall_score
 
 st.set_page_config(
     page_title="AI-Based Hiring Prediction",
@@ -14,7 +14,7 @@ st.set_page_config(
     layout="centered"
 )
 
-DATA_FILE = "AI-Based Hiring Prediction System.csv"
+DATA_FILE = "./dataset/AI-Based Hiring Prediction System.csv"
 TARGET = "Recruiter Decision"
 
 @st.cache_data
@@ -67,8 +67,9 @@ def train_model(data):
     y_pred = model.predict(X_test)
 
     metrics = {
-        "Accuracy": accuracy_score(y_test, y_pred),
-        "F1 Score": f1_score(y_test, y_pred, pos_label="Hire"),
+    "Accuracy": accuracy_score(y_test, y_pred),
+    "F1 Score": f1_score(y_test,y_pred,pos_label="Hire",zero_division=0),
+    "Recall": recall_score(y_test, y_pred, pos_label="Hire", zero_division=0)
     }
     return model, features, metrics
 
@@ -121,10 +122,15 @@ try:
         st.write(f"Reject Probability: **{prob_dict.get('Reject', 0) * 100:.2f}%**")
 
     with st.expander("Model Information"):
+        
+        model_name = model.named_steps["classifier"].__class__.__name__
+        
+        st.write(f"Model Name: **{model_name}**")
         st.write(f"Dataset rows: **{df.shape[0]}**")
         st.write(f"Dataset columns: **{df.shape[1]}**")
-        st.write(f"Accuracy: **{metrics['Accuracy']:.2f}**")
-        st.write(f"F1 Score: **{metrics['F1 Score']:.2f}**")
+        st.write(f"Accuracy: **{metrics['Accuracy']:.2%}**")
+        st.write(f"F1 Score: **{metrics['F1 Score']:.2%}**")
+        st.write(f"Recall: **{metrics['Recall']:.2%}**")
 
 except FileNotFoundError:
     st.error("CSV file missing. Keep this file in the same folder as app.py:")
@@ -132,3 +138,4 @@ except FileNotFoundError:
 except Exception as e:
     st.error("Something went wrong.")
     st.exception(e)
+
